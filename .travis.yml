@@ -1,0 +1,26 @@
+language: haskell
+
+cache:
+  directories:
+    - $HOME/.ghc
+    - $HOME/.stack/
+    - $TRAVIS_BUILD_DIR/.stack-work/
+
+matrix:
+  include:
+  - env: BUILD=stack RESOLVER="lts-6.27"
+    compiler: "#stack GHC-7.10.3, LTS Haskell 6.27"
+  - env: BUILD=stack RESOLVER="lts-7.15"
+    compiler: "#stack GHC-8.0.1, LTS Haskell 7.15"
+
+before_install:
+  - mkdir -p ~/.local/bin
+  - export PATH=~/.local/bin:$PATH
+  - travis_retry curl -L https://www.stackage.org/stack/linux-x86_64 | tar xz --wildcards --strip-components=1 -C ~/.local/bin '*/stack'
+  - chmod +x ~/.local/bin/stack
+
+install:
+  - stack setup --resolver $RESOLVER
+
+script:
+  - stack --resolver $RESOLVER build --bench --test --coverage --haddock --no-haddock-deps
