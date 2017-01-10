@@ -52,16 +52,16 @@ instance MonadCaching (HandlerT App IO) where
 instance Human (Route App) where
   toHuman r =
     case r of
-      CommunityR           -> "Community"
+      CommunityR           -> "社区"
       IrcR                 -> "IRC"
-      DocumentationR       -> "Documentation"
-      HomeR                -> "Home"
-      DonateR              -> "Donate"
-      MailingListsR        -> "Mailing Lists"
-      NewsR                -> "News"
-      StaticR{}            -> "Static"
-      DownloadsR           -> "Downloads"
-      DownloadsForR os     -> "Downloads for " <> toHuman os
+      DocumentationR       -> "文档"
+      HomeR                -> "首页"
+      DonateR              -> "捐款"
+      MailingListsR        -> "邮件列表"
+      NewsR                -> "新闻"
+      StaticR{}            -> "静态资源"
+      DownloadsR           -> "下载"
+      DownloadsForR os     -> "下载用于 " <> toHuman os <> " 的版本"
 
 instance Slug (Route App) where
   toSlug r =

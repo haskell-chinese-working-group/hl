@@ -12,8 +12,8 @@ import HL.View.Template
 newsV :: Html () -> FromLucid App
 newsV inner =
   template []
-           "News"
+           "新闻"
            (\_ ->
               container_
-                (do row_ (span12_ [class_ "col-sm-12"] (do h1_ "News"))
+                (do row_ (span12_ [class_ "col-sm-12"] (do h1_ "新闻"))
                     inner))
