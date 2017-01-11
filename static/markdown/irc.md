@@ -1,20 +1,18 @@
-# IRC Channels
+# IRC 频道
 
-The IRC channel can be an excellent place to learn more about Haskell,
-and to just keep in the loop on new things in the Haskell world. Many
-new developments in the Haskell world first appear on the irc channel.
+IRC频道是一个学习Haskell的好地方，还能很方便地追踪Haskell领域的近
+进展，很多Haskell领域的发展都最先在IRC上出现。
 
-Point your irc client to `chat.freenode.net` and then join the
-`#haskell` channel.
+使用你的IRC客户端打开 `chat.freenode.net`，然后加入 `#haskell` 频道。
 
-Alternately, you can try
-[http://java.freenode.net/](http://java.freenode.net/) or
-[http://webchat.freenode.net/](http://webchat.freenode.net/) which
-connects inside the browser.
+或者，你可以尝试使用
+[http://java.freenode.net/](http://java.freenode.net/) 以及
+[http://webchat.freenode.net/](http://webchat.freenode.net/)，
+在浏览器中连接IRC频道。
 
 ## Logs
 
-Searchable logs are available on IRC Browse for:
+IRC Browse中可用的可供搜索的日志记录包括：
 
 * [#haskell](http://ircbrowse.net/haskell) —
   [recent messages](http://ircbrowse.net/day/haskell/today/recent)
@@ -29,10 +27,9 @@ Searchable logs are available on IRC Browse for:
 * [#haskell-distributed](http://ircbrowse.net/haskell-distributed) —
   [recent messages](http://ircbrowse.net/day/haskell-distributed/today/recent)
 
-Plain text logs are also available at
-[tunes](http://tunes.org/~nef/logs/haskell/).
+纯文本的历史日志可以在[tunes](http://tunes.org/~nef/logs/haskell/)上找到。
 
-## Related channels
+## 相关频道
 
 <table class="table">
 <tr><th>Channel</th><th>Purpose</th></tr>
@@ -66,7 +63,7 @@ Plain text logs are also available at
 <tr><td>#haskell-web   </td><td> Friendly, practical discussion of haskell web app/framework/server development</td></tr>
 </table>
 
-## Platform-specific
+## 平台相关
 <table class="table">
 <tr><th>Channel</th><th>Purpose</th></tr>
 <tr><td>#arch-haskell  </td><td>Arch Linux/ specific Haskell conversations</td></tr>
@@ -74,7 +71,7 @@ Plain text logs are also available at
 <tr><td>#gentoo-haskell</td><td>Gentoo/Linux specific Haskell conversations</td></tr>
 </table>
 
-## Projects using haskell
+## 使用Haskell的项目
 <table class="table">
 <tr><th>Channel</th><th>Purpose</th></tr>
 <tr><td>#darcs </td><td>Darcs revision control system</td></tr>
