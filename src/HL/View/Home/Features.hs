@@ -25,69 +25,61 @@ features =
 
 purefunc :: Html ()
 purefunc =
-  do h3_ "Purely functional"
-     p_ "Every function in Haskell is a function in the mathematical sense (i.e., \"pure\"). \
-        \Even side-effecting IO operations are but a description of what to do, produced \
-        \by pure code. There are no statements or instructions, only expressions which \
-        \cannot mutate variables (local or global) nor access state like time or random \
-        \numbers."
-     p_ [class_ "text-center"] (a_ [data_ "toggle" "collapse", href_ "#collapse-functional", class_ "btn btn-xs btn-primary"] "Click to expand")
+  do h3_ "纯函数式"
+     p_ "Haskell中的每一个函数都有数学上的函数的一些性质，(例如\"pure\")， \
+        \甚至是描述程序的功能的带有副作用的IO操作也都由纯的代码组成。Haskell \
+        \程序中没有语句后者指令，只有表达式，这些表达式既不能修改局部变量和 \
+        \全局变量，也不能获取例如时间或者随机数这样的带有状态的值。"
+     p_ [class_ "text-center"] (a_ [data_ "toggle" "collapse", href_ "#collapse-functional", class_ "btn btn-xs btn-primary"] "点击展开")
      div_ [class_ "collapse", id_ "collapse-functional"] $ do
-       p_ (do "The following function takes an integer and returns an integer. "
-              "By the type it cannot do any side-effects whatsoever, it cannot\
-              \ mutate any of its arguments.")
+       p_ (do "下面这个函数接受一个整数作为参数，并返回一个整数。"
+              "通过它的类型可以看出它不能产生任何副作用，不能修改它的参数。")
        haskellPre "square :: Int -> Int\n\
                   \square x = x * x"
-       p_ (do "The following string concatenation is okay:")
+       p_ (do "下面这个字符串拼接操作是可以成功运行的：")
        haskellPre "\"Hello: \" ++ \"World!\" "
-       p_ (do "The following string concatenation is a type error:")
+       p_ (do "下面这个字符串拼接操作中包含着一个类型错误：")
        rejectedHaskellPre "Type error" "\"Name: \" ++ getLine"
-       p_ (do "Because "
+       p_ (do "因为 "
               code_ "getLine"
-              " has type "
+              " 的类型是 "
               code_ "IO String"
-              " and not "
-              code_ "String"
-              ", like "
+              " ，而不是例如 "
               code_ "\"Name: \""
-              " is. So by the type system you cannot mix and \
-              \match purity with impurity.")
+              " 这样的 "
+              code_ "String"
+              " 因此在类型系统的约束下，你不能将代码中纯的部分和不纯的（有副作用的）部分混在一起。")
 
 statically :: Html ()
 statically =
-  do h3_ "Statically typed"
-     p_ "Every expression in Haskell has a type which is determined at compile time. \
-       \All the types composed together by function application have to match up. If \
-       \they don't, the program will be rejected by the compiler. Types become not \
-       \only a form of guarantee, but a language for expressing the construction \
-       \of programs."
-     p_ [class_ "text-center"] (a_ [data_ "toggle" "collapse", href_ "#collapse-statically-typed", class_ "btn btn-xs btn-primary"] "Click to expand")
+  do h3_ "静态类型"
+     p_ "Haskell中每一个表达式都有自己的类型，类型在编译期确定。 \
+       \类型通过函数应用组合在一起，在函数应用时类型必须相匹配， \
+       \类型不能正确匹配的程序不能通过编译。Haskell中，类型不仅 \
+       \仅是一种保证，更是一门表达程序构造的语言。"
+     p_ [class_ "text-center"] (a_ [data_ "toggle" "collapse", href_ "#collapse-statically-typed", class_ "btn btn-xs btn-primary"] "点击展开")
      div_ [class_ "collapse", id_ "collapse-statically-typed"] $ do
-       p_ "All Haskell values have a type:"
+       p_ "Haskell中每一个值都有对应的类型："
        haskellPre "char = 'a'    :: Char\n\
                   \int = 123     :: Int\n\
                   \fun = isDigit :: Char -> Bool\n"
-       p_ "You have to pass the right type of values to functions, or the compiler\
-         \ will reject the program:"
+       p_ "你必须将具有正确的类型的值作为参数传给函数，否则程序不能通过编译："
        rejectedHaskellPre "Type error" "isDigit 1"
-       p_ "You can decode bytes into text:"
+       p_ "你可以将字节序列解码为Text："
        haskellPre "bytes = Crypto.Hash.SHA1.hash \"hello\" :: ByteString\n\
                   \text = decodeUtf8 bytes               :: Text\n"
-       p_ "But you cannot decode Text, which is already a vector \
-         \of Unicode points:"
+       p_ "但是，你不能解码Text, Text已经是一个Unicode序列了："
        rejectedHaskellPre "Type error" "doubleDecode = decodeUtf8 (decodeUtf8 bytes)"
 
 concurrent :: Html ()
 concurrent =
-  do h3_ "Concurrent"
-     p_ "Haskell lends itself well to concurrent programming due to its explicit \
-       \handling of effects. Its flagship compiler, GHC, comes with a high-\
-       \performance parallel garbage collector and light-weight concurrency \
-       \library containing a number of useful concurrency primitives and \
-       \abstractions."
-     p_ [class_ "text-center"] (a_ [data_ "toggle" "collapse", href_ "#collapse-concurrent", class_ "btn btn-xs btn-primary"] "Click to expand")
+  do h3_ "并发"
+     p_ "Haskell显式处理副作用的特性使得Haskell非常适合并发编程。 \
+       \Haskell的主流编译器GHC具有高性能的垃圾回收器和轻量级并发库， \
+       \其中包含很多有用的并发编程需要的原语和抽象。"
+     p_ [class_ "text-center"] (a_ [data_ "toggle" "collapse", href_ "#collapse-concurrent", class_ "btn btn-xs btn-primary"] "点击展开")
      div_ [class_ "collapse", id_ "collapse-concurrent"] $ do
-       p_ "Easily launch threads and communicate with the standard library:"
+       p_ "Haskell中，启动线程和线程间的通信都很容易通过标准库实现："
        haskellPre "main = do\n\
                   \  done <- newEmptyMVar\n\
                   \  forkIO (do putStrLn \"I'm one thread!\"\n\
@@ -97,31 +89,30 @@ concurrent =
                   \  killThread second\n\
                   \  msg <- takeMVar done\n\
                   \  putStrLn msg"
-       p_ "Use an asynchronous API for threads:"
+       p_ "通过异步API使用线程："
        haskellPre "do a1 <- async (getURL url1)\n\
                    \  a2 <- async (getURL url2)\n\
                    \  page1 <- wait a1\n\
                    \  page2 <- wait a2\n\
                    \  ..."
-       p_ "Atomic threading with software transactional memory:"
+       p_ "使用软件事务内存（software transactional memory）的原子线程："
        haskellPre "transfer :: Account -> Account -> Int -> IO ()\n\
                    \transfer from to amount =\n\
                    \  atomically (do deposit to amount\n\
                    \                 withdraw from amount)"
-       p_ "Atomic transactions must be repeatable, so arbitrary IO is disabled in \
-         \the type system:"
+       p_ "原子性事务必须是可以重复进行的，类型系统保证了在STM中不能使用任何IO操作："
        rejectedHaskellPre "Type error" "main = atomically (putStrLn \"Hello!\")"
 
 inference :: Html ()
 inference =
-  do h3_ "Type inference"
-     p_ "You don't have to explicitly write out every type in a Haskell program. \
-       \Types will be inferred by unifying every type bidirectionally. However, you \
-       \can write out types if you choose, or ask the compiler to write them for you \
-       \for handy documentation."
-     p_ [class_ "text-center"] (a_ [data_ "toggle" "collapse", href_ "#collapse-type-inference", class_ "btn btn-xs btn-primary"] "Click to expand")
+  do h3_ "类型推断"
+     p_ "你不需要给每个Haskell程序都显式地写出其类型，程序的类型 \
+       \通过对双向地合一所有类型进行推断。你可以让编译器替你推断 \
+       \出函数的类型，但你自己也可以选择写出函数的类型，以便生成 \
+       \更好的文档。"
+     p_ [class_ "text-center"] (a_ [data_ "toggle" "collapse", href_ "#collapse-type-inference", class_ "btn btn-xs btn-primary"] "点击展开")
      div_ [class_ "collapse", id_ "collapse-type-inference"] $ do
-       p_ "This example has a type signature for every binding:"
+       p_ "这个例子中，每一个值得类型签名都显式地给出："
        haskellPre "main :: IO ()\n\
                   \main = do line :: String <- getLine\n\
                   \          print (parseDigit line)\n\
@@ -130,21 +121,21 @@ inference =
                   \          if isDigit c\n\
                   \             then Just (ord c - ord '0')\n\
                   \             else Nothing"
-       p_ "But you can just write:"
+       p_ "你也可以采用这样的写法："
        haskellPre "main = do line <- getLine\n\
                   \          print (parseDigit line)\n\
                   \  where parseDigit (c : _) =\n\
                   \          if isDigit c\n\
                   \             then Just (ord c - ord '0')\n\
                   \             else Nothing"
-       p_ "You can also use inference to avoid wasting time explaining \
-         \what you want:"
+       p_ "你可以通过类型推断来避免为了说明你程序中的每一个值 \
+         \花费太多的时间："
        haskellPre "do ss <- decode \"[\\\"Hello!\\\",\\\"World!\\\"]\"\n\
                   \   is <- decode \"[1,2,3]\"\n\
                   \   return (zipWith (\\s i -> s ++ \" \" ++ show (i + 5)) ss is)\n\
                   \ => Just [\"Hello! 6\",\"World! 7\"]"
-       p_ "Types give a parser specification for free, the following \
-         \input is not accepted:"
+       p_ "类型系统可以给出一个语法分析器的规范而不会带来任何 \
+         \额外的负担，下面这样的输入不能并语法解析程序接受："
        haskellPre "do ss <- decode \"[1,2,3]\"\n\
                   \   is <- decode \"[null,null,null]\"\n\
                   \   return (zipWith (\\s i -> s ++ \" \" ++ show (i + 5)) ss is)\n\
@@ -152,46 +143,43 @@ inference =
 
 lazy :: Html ()
 lazy =
-  do h3_ "Lazy"
-     p_ "Functions don't evaluate their arguments. This means that programs \
-       \can compose together very well, with the ability to write control \
-       \constructs (such as if/else) just by writing normal functions. The purity \
-       \of Haskell code makes it easy to fuse chains of functions together, allowing \
-       \for performance benefits."
-     p_ [class_ "text-center"] (a_ [data_ "toggle" "collapse", href_ "#collapse-lazy", class_ "btn btn-xs btn-primary"] "Click to expand")
+  do h3_ "惰性求值"
+     p_ "函数不会以及对它的参数求值，这意味着程序能够很好地组合在一起， \
+       \以及能够仅仅通过普通的函数来实现诸如if/else这样的控制结构。 \
+       \Haskell代码的\"纯\"的性质使将函数调用链融合在一起变得更加容易， \
+       \这有助于提升程序的性能。"
+     p_ [class_ "text-center"] (a_ [data_ "toggle" "collapse", href_ "#collapse-lazy", class_ "btn btn-xs btn-primary"] "点击展开")
      div_ [class_ "collapse", id_ "collapse-lazy"] $ do
-       p_ "Define control structures easily:"
+       p_ "Haskell中定义程序控制结构是很容易的："
        haskellPre "when p m = if p then m else return ()\n\
                   \main = do args <- getArgs\n\
                   \          when (null args)\n\
                   \               (putStrLn \"No args specified!\") "
-       p_ "If you notice a repeated expression pattern, like "
+       p_ "如果你留意到程序中包含例如这样的："
        haskellPre "if c then t else False"
-       p_ "you can give this a name, like "
+       p_ "重复出现的表达式模式，你可以给它一个名字，比如这样："
        haskellPre "and c t = if c then t else False"
-       p_ "and then use it with the same effect as the orginal expression."
-       p_ (do "Get code re-use by composing lazy functions. It's quite natural\
-              \ to express the "
-              code_ "any"
-              " function by reusing the "
+       p_ "之后你就可以直接使用这个名字并获得与原来的表达式一样的效果。"
+       p_ (do "通过组合惰性函数可以实现对代码的复用。很自然地就能想到，可以复用"
               code_ "map"
-              " and "
+              " 和 "
               code_ "or"
-              " functions:")
+              " 来表达 "
+              code_ "any"
+              " 函数：")
        haskellPre "any :: (a -> Bool) -> [a] -> Bool\n\
                   \any p = or . map p"
-       p_ (do "Reuse the recursion patterns in "
-              code_ "map"; ", "; code_ "filter"; ", "; code_ "foldr"; ", etc.")
+       p_ (do "通过使用例如"
+              code_ "map"; ", "; code_ "filter"; ", "; code_ "foldr"
+              "这样的函数可以复用其中包含的递归的程序模式。")
 
 packages :: Html ()
 packages =
-  do h3_ "Packages"
-     p_ "Open source contribution to Haskell is very active with a wide range \
-        \of packages available on the public package servers."
-     p_ [class_ "text-center"] (a_ [data_ "toggle" "collapse", href_ "#collapse-packages", class_ "btn btn-xs btn-primary"] "Click to expand")
+  do h3_ "包"
+     p_ "Haskell社区的开源贡献非常活跃，在Hackage上，可以找到大量开源的Haskell包。"
+     p_ [class_ "text-center"] (a_ [data_ "toggle" "collapse", href_ "#collapse-packages", class_ "btn btn-xs btn-primary"] "点击展开")
      div_ [class_ "collapse", id_ "collapse-packages"] $ do
-       p_ "There are 6,954 packages freely available. Here is a sample of the \
-         \most common ones:"
+       p_ "目前已经有6,954个Haskell包可以自由获取，其中相当常用的包括："
        table_ [class_ "packages"] $
          forM_ (alternating pkgs)
                (\((name1,desc1),(name,desc)) ->

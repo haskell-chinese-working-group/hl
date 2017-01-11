@@ -38,7 +38,7 @@ Haskell.org委员会的决策过程，请订阅这个邮件列表。
 
 [历史合集](https://mail.haskell.org/pipermail/haskell-community/)
 
-## Other mailing lists
+## 其他邮件列表
 
 还有很多其他的邮件列表托管在 haskell.org 上，尽管其中的一些已经不再活跃。完整的
 列表在[这里](http://mail.haskell.org)。

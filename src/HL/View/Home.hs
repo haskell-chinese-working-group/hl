@@ -117,8 +117,8 @@ transition =
        (container_
           (row_ (span6_ [class_ "col-sm-6"]
                         (do br_ []
-                            h2_ "寻找 wiki？"
-                            p_ (do "这个新版的Haskell主页，Wiki已经移至 "
+                            h2_ "Wiki？"
+                            p_ (do "这是新版的Haskell主页，Wiki已经移至 "
                                    a_ [href_ "https://wiki.haskell.org"] "wiki.haskell.org.")
                             br_ []))))
 
