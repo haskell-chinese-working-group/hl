@@ -119,7 +119,8 @@ transition =
                         (do br_ []
                             h2_ "Wiki？"
                             p_ (do "这是新版的Haskell主页，Wiki已经移至 "
-                                   a_ [href_ "https://wiki.haskell.org"] "wiki.haskell.org.")
+                                   a_ [href_ "https://wiki.haskell.org"] "wiki.haskell.org"
+                                   "。")
                             br_ []))))
 
 -- | Events section.
