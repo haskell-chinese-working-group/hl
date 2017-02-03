@@ -16,30 +16,28 @@ donateV :: FromLucid App
 donateV =
   templateWithBodyEnder
     []
-    "Donate to Haskell.org"
+    "向Haskell.org捐款"
     (\_ ->
        do container_
             (row_
                (span12_
-                  (do h1_ "Make a donation to Haskell.org"
+                  (do h1_ "向Haskell.org捐款"
                       p_
-                        "Using the form below, you can make a tax-deductible \
-                        \donation to Haskell.org."
-                      p_ (do "You can donate with any credit card, or using "
-                             a_ [href_ "https://bitcoin.org/en/"] "Bitcoin"
-                             ". You'll also need a valid email for a donation, but "
-                             "only for a receipt (if you want to stay anonymous, "
-                             "try a temporary random email from "
+                        "通过下面这个表单，你可以向Haskell.org发起一笔免费的捐赠。"
+                      p_ (do "你可以使用任何一张信用卡，或者"
+                             a_ [href_ "https://bitcoin.org/en/"] "比特币"
+                             "。 此外你需要一个有效的电子邮箱用于获取收据"
+                             "（如果你想要保持匿名，可以尝试使用"
                              a_ [href_ "http://maildrop.cc"] "maildrop.cc"
-                             ").")
-                      p_ (do "Your donations are processed by "
+                             "提供的临时邮箱）。")
+                      p_ (do "你的捐赠会被 "
                              a_ [href_ "https://stripe.com"] "Stripe"
-                             ", and granted to Haskell.org on behalf of "
+                             "受理，并由它代表在纽约州注册的 §501(c)3 类型的非盈利组织"
                              a_ [href_ "http://www.spi-inc.org/"] "Software in the Public Interest"
-                             ", a non-profit §501(c)3 registered in the state of New York.")
-                      p_ (do "Alternatively, you can donate to Haskell.org/SPI via "
+                             " 授予Haskell.org。")
+                      p_ (do "此外，你也可以通过免费的在线筹资平台 "
                              a_ [href_ "https://co.clickandpledge.com/advanced/default.aspx?wid=69561"] "Click & Pledge"
-                             ", a free online fundraising platform.")
+                             " 向 Haskell.org/SPI 捐款。")
                       p_ donateForm
                       p_ statusWindow))))
     (\_ url -> do script_ [src_ "https://checkout.stripe.com/checkout.js"] ""
@@ -49,9 +47,9 @@ donateV =
 donateForm :: Html ()
 donateForm =
   form_ [class_ "form-inline"] (do
-    input_ [id_ "monies", type_ "number", class_ "input-large", placeholder_ "Amount in USD"]
+    input_ [id_ "monies", type_ "number", class_ "input-large", placeholder_ "美元金额"]
     " "
-    button_ [id_ "paybtn", class_ "btn btn-info", type_ "button"] "Donate")
+    button_ [id_ "paybtn", class_ "btn btn-info", type_ "button"] "捐款")
 
 statusWindow :: Html ()
 statusWindow =
@@ -62,7 +60,7 @@ statusWindow =
       span_ [ id_ "status_glyph", class_ "glyphicon glyphicon-exclamation-sign"
             , aria_hidden_ "true" ] ""
       span_ [ id_ "status_title", class_ "sr-only" ] "Error:"
-      span_ [ id_ "status_message" ] "  Enter an amount above."))
+      span_ [ id_ "status_message" ] "  在上方留言."))
 
 role'_ :: Text -> Attribute
 role'_ = makeAttribute "role"

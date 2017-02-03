@@ -12,5 +12,5 @@ import HL.View
 getMailingListsR :: C (Html ())
 getMailingListsR =
   markdownPage [CommunityR,MailingListsR]
-               "Mailing Lists"
+               "邮件列表"
                "mailing-lists.md"

@@ -13,31 +13,31 @@ communityV :: FromLucid App
 communityV =
   template
     []
-    "Community"
+    "社区"
     (\url ->
        container_
          (row_
             (span12_ [class_ "col-sm-12"]
-               (do h1_ "Community"
+               (do h1_ "社区"
                    p_
-                     "Haskellers interact, talk and collaborate across several mediums \
-                     \and around the world. There are places to learn, to teach, to ask questions, and to find contributors and collaborators."
-                   h2_ "Online Communities and Social Resources"
-                   p_ "Haskellers are active on a number of online areas, but the most busy are below:"
+                     "在这里，来自世界各地的Haskell通过多种方式交流、讨论和合作。\
+                     \这些在线社区是学习、教学、提问，以及寻求贡献和协作的地方。"
+                   h2_ "在线社区和社交资源"
+                   p_ "haskell用户在很多在线社区都很活跃，尤其是一下这些："
                    ul_ (online url)
-                   h2_ "In-person Groups and Meetups"
-                   p_ "There are a number of Haskell Users groups where haskellers meet to learn and code. Some are listed below:"
+                   h2_ "个人团体和聚会"
+                   p_ "Haskell用户还有很多用于学习和编程的聚会，包括下面这些："
                    ul_ offline
-                   h2_ "Conferences and Events"
-                   p_ "There are a number of conferences and events featuring Haskell, some focusing on the academic side of things, and some on the commercial or hobbyist side. Here are just a few:"
-                   h3_ "Academic Conferences"
+                   h2_ "会议和活动"
+                   p_ "有很多专门关注Haskell的会议和活动，其中一些专注于学术方面的问题，另一些更加关注Haskell的商业应用和其他有趣的方面。下面列出了其中的一小部分："
+                   h3_ "学术会议"
                    ul_ academicConferences
-                   h3_ "Non-Academic Conferences"
+                   h3_ "非学术会以"
                    ul_ commercialConferences
-                   h3_ "Hackathons"
-                   p_ "Haskell Hackathons are a long tradition, with lots of learning and social exchange. In many ways they function as semi-structured conferences. Here are some of the most notable:"
+                   h3_ "黑客马拉松"
+                   p_ "Haskell黑客马拉松有着很悠久的传统，包括大量的学习交流和社交互动。在很多方面，Haskell黑客马拉松扮演着半结构化会议的角色。下面是其中比较出名的一部分："
                    ul_ hackathons
-                   h2_ "Specific Interest Groups"
+                   h2_ "专业组"
                    ul_ sigs
                    h2_ ""))))
 

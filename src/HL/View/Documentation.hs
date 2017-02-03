@@ -14,12 +14,12 @@ documentationV :: FromLucid App
 documentationV =
   template
     []
-    "Documentation"
+    "文档"
     (\url ->
        container_
          (row_
             (span12_ [class_ "col-sm-12"]
-               (do h1_ "Documentation"
+               (do h1_ "文档"
                    books
                    courses
                    tutorials
@@ -31,7 +31,7 @@ documentationV =
 
 books :: Html ()
 books =
-  do h2_ "Books for Learning Haskell"
+  do h2_ "学习Haskell的图书"
      links bookLinks
   where
     bookLinks =
@@ -48,8 +48,8 @@ books =
 
 courses :: Html ()
 courses =
-  do h2_ "Courses"
-     p_ "Course material created by instructors"
+  do h2_ "课程"
+     p_ "课程材料"
      links courseLinks
   where
      courseLinks =
@@ -60,8 +60,8 @@ courses =
 
 tutorials :: Html ()
 tutorials =
-  do h2_ "Tutorials"
-     p_ "Short, dense, classic ways to hit the ground running"
+  do h2_ "教程"
+     p_ "简短精炼但直击要害的学习途径"
      links tutorialLinks
   where
     tutorialLinks =
@@ -73,8 +73,8 @@ tutorials =
 
 online :: Html ()
 online =
-  do h2_ "Online Resources"
-     p_ "Curated resources put together by Haskellers:"
+  do h2_ "在线资源"
+     p_ "Haskell用户精心整理和维护的资源："
      links resources
   where
     resources =
@@ -88,8 +88,8 @@ online =
       ,("Learning Haskell Resources on the Haskell Wiki","https://wiki.haskell.org/Learning_Haskell")]
 
 manuals :: Html ()
-manuals = do h2_ "Manuals and Guides"
-             p_ "Manuals and guides that cover common Haskell tooling:"
+manuals = do h2_ "手册和指导"
+             p_ "涵盖了Haskell常用的工具的指导："
              links tools
   where tools = [("GHC User Guide","http://www.haskell.org/ghc/docs/latest/html/users_guide/")
                 ,("Cabal Homepage And Quick Links","https://www.haskell.org/cabal/")
@@ -101,8 +101,8 @@ manuals = do h2_ "Manuals and Guides"
 
 cabal :: Html ()
 cabal =
-  do h2_ "Package and Dependency Management"
-     p_ "The Cabal guide is a good start but there's a lot to learn:"
+  do h2_ "包和依赖管理"
+     p_ "Cabal的教程是一个很好的起点，但仍有很多内容要进一步学习："
      links cabalInfo
   where cabalInfo =
            [("Stephen Diehl's Cabal Quickstart","http://dev.stephendiehl.com/hask/#cabal")
@@ -112,8 +112,8 @@ cabal =
 
 library :: Html ()
 library =
-  do h2_ "Library Documentation"
-     p_ "Documentation for Haskell libraries is typically available on Hackage. We also have specialized tools for searching across it, not only by name, but by type."
+  do h2_ "库的文档"
+     p_ "Haskell库的文档通常可以在Hackage上获取，此外我们还有通过类型而非名字的专门用于搜索文档的工具。"
      links docs
   where docs =
          [("Hoogle API Search","http://www.haskell.org/hoogle/")
@@ -125,14 +125,14 @@ library =
 
 report :: (Route App -> Text) -> Html ()
 report _ =
-  do h2_ "Language Report"
-     p_ (do "The Haskell 2010 language report is available online "
-            a_ [href_ "//haskell.org/onlinereport/haskell2010/"] "here"
+  do h2_ "语言报告"
+     p_ (do "Haskell 2010语言报告可以在线获取 "
+            a_ [href_ "//haskell.org/onlinereport/haskell2010/"] "链接"
             ". ")
-     p_ (do "A PDF version is available "
-            a_ [href_ "//haskell.org/definition/haskell2010.pdf"] "here"
+     p_ (do "PDF格式的文档 "
+            a_ [href_ "//haskell.org/definition/haskell2010.pdf"] "下载链接"
             ".")
-     p_ "It can also be downloaded as a darcs repository: "
+     p_ "这份文档也可以从darcs仓库下载： "
      p_ (pre_ (code_ "$ darcs get http://darcs.haskell.org/haskell2010-report"))
 
 links :: [(Text,Text)] -> Html ()

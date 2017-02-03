@@ -13,7 +13,7 @@ import HL.View.Template
 homeV :: [(Text, Text, Text)] -> FromLucid App
 homeV vids =
   skeleton
-    "Haskell Language"
+    "Haskell编程语言"
     (\_ _ -> return ())
     (\_cur url ->
        do navigation False [] Nothing url
@@ -53,11 +53,11 @@ header url =
   where branding = do br_ [class_ "hidden-xs"]
                       img_ [src_ (url (StaticR img_haskell_logo_svg)), class_ "img-responsive"]
         summation =
-          h4_ [class_ "summary"] "An advanced, purely functional programming language"
+          h4_ [class_ "summary"] "先进的纯函数式编程语言"
         tag = do br_ [class_ "visible-xs visible-sm"]
-                 h4_ [class_ "tag"] "Declarative, statically typed code."
+                 h4_ [class_ "tag"] "声明式的静态类型的代码"
         sample =
-          div_ [class_ "code-sample",title_ "This example is contrived in order to demonstrate what Haskell looks like, including: (1) where syntax, (2) enumeration syntax, (3) pattern matching, (4) consing as an operator, (5) list comprehensions, (6) infix functions. Don't take it seriously as an efficient prime number generator."]
+          div_ [class_ "code-sample",title_ "这个例子用来展示Haskell程序看起来是什么样子，包括： (1) where 关键字， (2) 枚举语法， (3) 模式匹配， (4) 拼接运算符， (5) 列表归纳， (6) 中缀函数。不要将这个例子当做一个高效的质数生成器。"]
                (haskellPre codeSample)
 
 -- | Code sample.
@@ -81,12 +81,12 @@ try _ =
                                       )))))
 
   where repl =
-          do h2_ "Try it!"
+          do h2_ "试一试！"
              noscript_ (span6_ (div_ [class_ "alert alert-warning"]
-                    "Try haskell requires Javascript to be enabled."))
+                    "体验Haskell需要浏览器启用JavaScript。"))
              span6_ [hidden_ "", id_ "cookie-warning"]
                   (div_ [class_ "alert alert-warning"]
-                  "Try haskell requires cookies to be enabled.")
+                  "体验Haskell需要浏览器启用cookies。")
              div_ [id_ "console"]
                   (return ())
 
@@ -97,7 +97,7 @@ community _url vids =
   div_ [id_ "community-wrapper"]
        (do div_ [class_ "videos"]
                 (container_ (row_ (span12_ [class_ "col-sm-12"]
-                                           (do h2_ "Videos"
+                                           (do h2_ "视频"
                                                br_ []
                                                row_ (span12_ [class_ "col-sm-12"]
                                                              (row_ [class_ "row-flex"] (forM_ vids vid)))
@@ -117,9 +117,10 @@ transition =
        (container_
           (row_ (span6_ [class_ "col-sm-6"]
                         (do br_ []
-                            h2_ "Psst! Looking for the wiki?"
-                            p_ (do "This is the new Haskell home page! The wiki has moved to "
-                                   a_ [href_ "https://wiki.haskell.org"] "wiki.haskell.org.")
+                            h2_ "Wiki？"
+                            p_ (do "这是新版的Haskell主页，Wiki已经移至 "
+                                   a_ [href_ "https://wiki.haskell.org"] "wiki.haskell.org"
+                                   "。")
                             br_ []))))
 
 -- | Events section.
@@ -133,7 +134,7 @@ sponsors :: Html ()
 sponsors =
   div_ [class_ "sponsors pattern-bg"] $
     container_ $
-      do row_ (span6_ [class_ "col-sm-6"] (h2_ "Sponsors"))
+      do row_ (span6_ [class_ "col-sm-6"] (h2_ "赞助方"))
          row_ (do span6_ [class_ "col-sm-6"]
                          (p_ (do strong_ (a_ [href_ "https://www.datadoghq.com"] "DataDog")
                                  " provides powerful, customizable 24/7 metrics and monitoring \
